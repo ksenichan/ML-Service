@@ -131,7 +131,7 @@ def calculate_jaccard_index(true_mask, pred_mask, eps=1e-7):
 st.title('Сегментация печени на снимках КТ')
 
 uploaded_file = st.file_uploader("Выберите изображение...", type="nii", key="file-upload")
-uploaded_true_mask = st.file_uploader("Выберите эталонную маску для расчета метрики...", type="nii", key="true-mask-upload")
+uploaded_true_mask = st.file_uploader("Выберите эталонную маску для расчета индекса Жаккара...", type="nii", key="true-mask-upload")
 
 model_path ='UnetPlusPlus.pt'
 
