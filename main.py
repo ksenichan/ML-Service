@@ -82,7 +82,7 @@ def visualize(img, pred_mask, true_mask=None):
     img = img.squeeze(0) if img.ndim > 2 else img
     enhanced_img = enhance_contrast(img)
 
-    figure, ax = plt.subplots(1, 3 if true_mask is not None else 2, figsize=(15, 5))
+    figure, ax = plt.subplots(1, 3 if true_mask is not None else 2, figsize=(18, 6))
 
     ax[0].imshow(enhanced_img, cmap='gist_gray')
     ax[0].title.set_text('Оригинальное изображение')
@@ -128,7 +128,7 @@ def calculate_jaccard_index(true_mask, pred_mask, eps=1e-7):
 
     return np.nanmean(jac_per_class)
 
-st.title('Сегментация печени')
+st.title('Сегментация печени на снимках КТ')
 
 uploaded_file = st.file_uploader("Выберите изображение...", type="nii", key="file-upload")
 uploaded_true_mask = st.file_uploader("Выберите эталонную маску для расчета метрики...", type="nii", key="true-mask-upload")
