@@ -154,7 +154,7 @@ def process_file(uploaded_file):
 if uploaded_file is not None:
     tmp_file_path = process_file(uploaded_file)
 
-    start_button = st.button("Запустить обработку")
+    start_button = st.button("Запустить")
 
     if start_button:
         transformations = A.Compose([
