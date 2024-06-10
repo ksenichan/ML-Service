@@ -84,15 +84,15 @@ def visualize(img, pred_mask, true_mask=None):
 
     figure, ax = plt.subplots(1, 3 if true_mask is not None else 2, figsize=(18, 6))
 
-    ax[0].imshow(enhanced_img, cmap='gist_gray')
+    ax[0].imshow(enhanced_img, cmap='gray')
     ax[0].title.set_text('Оригинальное изображение')
 
-    ax[1].imshow(pred_mask, cmap='gist_gray')
-    ax[1].title.set_text('Локализация опухолей')
+    ax[1].imshow(pred_mask, cmap='gray')
+    ax[1].title.set_text('Сегментация')
 
     if true_mask is not None:
         ax[2].imshow(true_mask, cmap='gist_gray')
-        ax[2].title.set_text('Эталонная маска')
+        ax[2].title.set_text('Истинная маска')
 
     for a in ax:
         a.axis('off')
