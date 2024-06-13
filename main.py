@@ -37,9 +37,13 @@ class CustomSegmentationDataset(Dataset):
 
     def get_slices(self, im_nii_paths):
         ims = []
-        nii_im_data = self.read_nii(im_nii_paths)
-        for idx, im in enumerate(nii_im_data):
-            ims.append(im)
+        for im_nii in enumerate(im_nii_paths):
+            nii_im_data = self.read_nii(im_nii)
+            max_nonzero_slices = []
+            for idx, im in enumerate(nii_im_data):
+                max_nonzero_slices.append(im)
+            for im in max_nonzero_slices:
+                ims.append(im)
         return ims
 
     def read_nii(self, im_path):
@@ -91,7 +95,7 @@ def visualize(img, pred_mask, true_mask=None):
     ax[1].title.set_text('Сегментация')
 
     if true_mask is not None:
-        ax[2].imshow(true_mask, cmap='gist_gray')
+        ax[2].imshow(true_mask, cmap='gray')
         ax[2].title.set_text('Истинная маска')
 
     for a in ax:
@@ -131,7 +135,7 @@ def calculate_jaccard_index(true_mask, pred_mask, eps=1e-7):
 st.title('Сегментация печени на снимках КТ')
 
 uploaded_file = st.file_uploader("Выберите изображение...", type="nii", key="file-upload")
-uploaded_true_mask = st.file_uploader("Выберите эталонную маску для расчета индекса Жаккара...", type="nii", key="true-mask-upload")
+uploaded_true_mask = st.file_uploader("Выберите истинную маску для расчета индекса Жаккара...", type="nii", key="true-mask-upload")
 
 model_path ='./UnetPlusPlus.pt'
 
