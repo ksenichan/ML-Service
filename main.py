@@ -37,13 +37,9 @@ class CustomSegmentationDataset(Dataset):
 
     def get_slices(self, im_nii_paths):
         ims = []
-        for im_nii in enumerate(im_nii_paths):
-            nii_im_data = self.read_nii(im_nii)
-            max_nonzero_slices = []
-            for idx, im in enumerate(nii_im_data):
-                max_nonzero_slices.append(im)
-            for im in max_nonzero_slices:
-                ims.append(im)
+        nii_im_data = self.read_nii(im_nii_paths)
+        for idx, im in enumerate(nii_im_data):
+            ims.append(im)
         return ims
 
     def read_nii(self, im_path):
