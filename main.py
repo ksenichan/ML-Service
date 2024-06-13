@@ -200,4 +200,4 @@ if st.session_state.predictions is not None:
 
     if true_mask is not None:
         jaccard_index = calculate_jaccard_index(true_mask, pred_mask)
-        st.write(f'Метрика Жакара: {jaccard_index:.4f}')
+        st.write(f'Метрика Жаккара: {jaccard_index:.4f}')
